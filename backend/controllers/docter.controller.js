@@ -55,7 +55,7 @@ const getAllDocter=async (req,res)=>{
         }
     
    if(searchByName&&sortByDate&&filterBySpecialization){
-    let Docters=await Docter.find({name:searchByName,specialization:filterBySpecialization}).sort({date:sortByDate})
+    let Docters=await Docter.find({name:{$regex:searchByName},specialization:filterBySpecialization}).sort({date:sortByDate})
     if(Docters.length>0){
         return res.status(200).json(Docters)
     }else{
@@ -64,7 +64,7 @@ const getAllDocter=async (req,res)=>{
         })
     }
    }else if(searchByName&&sortByDate){
-    let Docters=await Docter.find({name:searchByName}).sort({date:sortByDate})
+    let Docters=await Docter.find({name:{$regex:searchByName}}).sort({date:sortByDate})
     if(Docters.length>0){
         return res.status(200).json(Docters)
     }else{
@@ -84,7 +84,7 @@ const getAllDocter=async (req,res)=>{
     }
    }
    else if(searchByName&&filterBySpecialization){
-    let Docters=await Docter.find({name:searchByName,specialization:filterBySpecialization})
+    let Docters=await Docter.find({name:{$regex:searchByName},specialization:filterBySpecialization})
     if(Docters.length>0){
         return res.status(200).json(Docters)
     }else{
@@ -94,7 +94,7 @@ const getAllDocter=async (req,res)=>{
     }
 
    }else if(searchByName){
-    let Docters=await Docter.find({name:searchByName})
+    let Docters=await Docter.find({name:{$regex:searchByName}})
     if(Docters.length>0){
         return res.status(200).json(Docters)
     }else{
