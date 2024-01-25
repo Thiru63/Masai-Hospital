@@ -34,8 +34,8 @@ const loginFai = (message) => {
   return { type: LOGIN_FAILURE, message: message }
 }
 
-const logoutSuc = () => {
-  return { type: LOGOUT }
+const logoutSuc = (message) => {
+  return { type: LOGOUT,message:message }
 }
 
 
@@ -75,5 +75,5 @@ export const login = async (dispatch, payload) => {
 };
 
 export const logout = (dispatch) => {
-  dispatch(logoutSuc())
+  dispatch(logoutSuc("Logout Successfull"))
 };

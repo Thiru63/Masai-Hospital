@@ -36,7 +36,17 @@ export const DoctersDashboard = () => {
   }
 
 
+  useEffect(()=>{
 
+    if(state.message){
+      alert(state.message)
+    }
+    if(state.error){
+      alert(state.error)
+    }
+
+
+  },[state])
   
 
   

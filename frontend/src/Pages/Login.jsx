@@ -33,6 +33,12 @@ export const Login = () => {
     if (state.success) {
       setLogin(true)
     }
+    if(state.message){
+      alert(state.message)
+    }
+    if(state.error){
+      alert(state.error)
+    }
 
   }, [state])
 

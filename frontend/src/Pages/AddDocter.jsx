@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { postDocter } from "../Redux/DocterReducer/action";
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Navigate } from "react-router-dom";
 import { Loading } from "../Components/Loading";
 
@@ -38,7 +38,17 @@ export const AddDocter = () => {
     postDocter(dispatch, formdata, auth.token)
 
   }
+  useEffect(()=>{
 
+    if(docter.message){
+      alert(docter.message)
+    }
+    if(docter.error){
+      alert(docter.error)
+    }
+
+
+  },[docter])
 
 
   if (docter.success) {

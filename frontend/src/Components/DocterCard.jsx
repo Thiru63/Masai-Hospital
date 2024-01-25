@@ -16,7 +16,7 @@ export const DocterCard = ({ docter ,setEditModal,setFormdata,searchTxt,sortDate
   }
 
   return (
-    <div className="docetr_card">
+    <div className="docter_card">
 
       <div>
         <img src={docter.image} alt={docter.name} />
@@ -26,7 +26,7 @@ export const DocterCard = ({ docter ,setEditModal,setFormdata,searchTxt,sortDate
         <p>Location : {docter.location}</p>
         <p>Date : {dateConvert(docter.date)}</p>
         <p>Slots : {docter.slots}</p>
-        <p>Fee : {docter.fee}</p>
+        <p>Fee : ${docter.fee}</p>
         <button onClick={()=>setEditModal(true)}>EDIT</button>
         <button onClick={()=>deleteDocter(dispatch,auth.token,docter._id,searchTxt,sortDate,filterSpecial)}>DELETE</button>
       </div>

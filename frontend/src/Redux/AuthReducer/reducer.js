@@ -36,13 +36,13 @@ export const authReducer = (state = initialState, { type, payload, message }) =>
       return { ...state, loading: true }
       break;
     case LOGIN_SUCCESS:
-      return { ...state, loading: false, token: payload.token, success: true, isAuth: true, error: null, user_data: payload.user }
+      return { ...state, loading: false, token: payload.token,message:payload.message, success: true, isAuth: true, error: null, user_data: payload.user }
       break;
     case LOGIN_FAILURE:
       return { ...state, loading: false, error: message, token: null, success: false, isAuth: false, user_data: null }
       break;
     case LOGOUT:
-      return { ...state, loading: false, error: null, token: "", success: false, isAuth: false, user_data: null }
+      return { ...state, loading: false, error: null, token: "",message:message, success: false, isAuth: false, user_data: null }
       break;
 
     default:
