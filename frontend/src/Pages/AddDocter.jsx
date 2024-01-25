@@ -1,102 +1,138 @@
 import { useDispatch, useSelector } from "react-redux";
 import { postDocter } from "../Redux/DocterReducer/action";
-import {useState} from 'react'
+import { useState } from 'react'
 import { Navigate } from "react-router-dom";
-import {DoctersDashboard} from './DoctersDashboard'
+import { Loading } from "../Components/Loading";
 
 
-export const AddBook = () => {
 
-  const dispatch=useDispatch()
-  const auth=useSelector(store=>store.authReducer)
-  const docter=useSelector(store=>store.docterReducer)
+export const AddDocter = () => {
 
-  const[formdata,setFormdata]=useState({
-    
+  const dispatch = useDispatch()
+  const auth = useSelector(store => store.authReducer)
+  const docter = useSelector(store => store.docterReducer)
+
+  const [formdata, setFormdata] = useState({
+
     name: "",
-	  image: "",
-	  specialization: "",
-	  experience: "",
-	  location: "",
-	  date: "",
-		slots : "",
-	  fee: ""
-    
+    image: "",
+    specialization: "",
+    experience: "",
+    location: "",
+    slots: "",
+    fee: ""
+
   })
 
-  const handleChange=(e)=>{
-    let {name,value}=e.target 
-    if(name=='published_year' || name=='isbn'){
-      value=Number(value)
+  const handleChange = (e) => {
+    let { name, value } = e.target
+
+    if (name == 'experience' || name == 'slots' || name == 'fee') {
+      value = Number(value)
     }
-    setFormdata({...formdata,[name]:value})
+    setFormdata({ ...formdata, [name]: value })
   }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-    let st=postDocter(dispatch,formdata,auth.token)
-    if(st){
-      return <Navigate to='/' />
-    }
-    
+    postDocter(dispatch, formdata, auth.token)
+
+  }
+
+
+
+  if (docter.success) {
+    return <Navigate to='/' />
+  }
+
+  if (docter.loading) {
+    return <Loading />
   }
 
   return (
-    <div data-testid="add-new-page">
-      <form className="form" data-testid="addbook-form" onSubmit={handleSubmit}>
-        <p className="form-title">Add New Book</p>
+    <div >
+      <form className="form" onSubmit={handleSubmit}>
+        <p className="form-title">Add New Appointment</p>
         <div className="input-container">
-          <span>Book Name</span>
+          <span>Name</span>
           <input
             type="text"
-            data-testid="book-title"
-            placeholder="Enter Book Name"
-            name="title"
+
+            placeholder="Enter Docter Name"
+            name="name"
+            required
             onChange={handleChange}
           />
         </div>
         <div className="input-container">
-          <span>Author Name</span>
+          <span>Docter image url</span>
           <input
-            type="text"
-            data-testid="book-author"
-            placeholder="Enter Author Name"
-            name="author"
+            type="url"
+
+            placeholder="Docter image url"
+            name="image"
+            required
             onChange={handleChange}
           />
         </div>
         <div className="input-container">
-          <span>Book published year</span>
+          <span>Specialization</span>
+          <select name="specialization"required onChange={handleChange}>
+            <option value="">Select Docter Specialization</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Psychiatrist">Psychiatrist </option>
+          </select>
+
+        </div>
+        <div className="input-container">
+          <span>Experience</span>
           <input
-            type="text"
-            data-testid="book-published_year"
-            placeholder="Enter book published year"
-            name="published_year"
+            type="number"
+
+            placeholder="Enter Docter Experience in no of years"
+            name="experience"
+            required
             onChange={handleChange}
           />
         </div>
         <div className="input-container">
-          <span>Book Genre</span>
+          <span style={{ color: "black" }}>Location</span>
           <input
             type="text"
-            data-testid="book-genre"
-            placeholder="Enter Book genre"
-            name="genre"
+
+            placeholder="Enter Location"
+            name="location"
+            required
             onChange={handleChange}
           />
         </div>
         <div className="input-container">
-          <span style={{ color: "black" }}>Book isbn no</span>
+          <span>Slots per Day</span>
           <input
-            type="text"
-            data-testid="book-isbn"
-            placeholder="Enter Book isbn no"
-            name="isbn"
+            type="number"
+
+            placeholder="Enter Slots per day"
+            name="slots"
+            required
             onChange={handleChange}
           />
         </div>
+        <div className="input-container">
+          <span>Docter Fee</span>
+          <input
+            type="number"
+
+            placeholder="Enter Docter Fee in $"
+            name="fee"
+            required
+            onChange={handleChange}
+          />
+        </div>
+
         <button type="submit" className="submit">
-          Add Book
+          Add Appointment
         </button>
       </form>
     </div>
