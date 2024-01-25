@@ -92,7 +92,7 @@ export const AddDocter = () => {
             <option value="Cardiologist">Cardiologist</option>
             <option value="Dermatologist">Dermatologist</option>
             <option value="Pediatrician">Pediatrician</option>
-            <option value="Psychiatrist">Psychiatrist </option>
+            <option value="Psychiatrist">Psychiatrist</option>
           </select>
 
         </div>

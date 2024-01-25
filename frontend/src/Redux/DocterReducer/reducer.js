@@ -27,41 +27,41 @@ export const docterReducer = (state = initialState, { type, payload, message }) 
 
   switch (type) {
     case GET_DOCTERS_REQUEST:
-      return { ...state, loading: true }
+      return { ...state, loading: true,Docters:[],error:null,message:"",success:false }
       break;
 
     case GET_DOCTERS_SUCCESS:
-      return { ...state, loading: false, success: true, Docters: payload, error: null }
+      return { ...state, loading: false, Docters:payload,error:null,message:"",success:true }
       break;
     case GET_DOCTERS_FAILURE:
-      return { ...state, loading: false, error: message }
+      return { ...state, loading: false, Docters:[],error:message,message:"",success:false }
       break;
     case POST_DOCTER_REQUEST:
-      return { ...state, loading: true }
+      return { ...state, loading: true,Docters:[],error:null,message:"",success:false }
       break;
     case POST_DOCTER_SUCCESS:
-      return { ...state, loading: false, message: message, success: true, error: null }
+      return { ...state, loading: false, Docters:[],error:null,message:message,success:true }
       break;
     case POST_DOCTER_FAILURE:
-      return { ...state, loading: false, error: message, success: false }
+      return { ...state, loading: false, Docters:[],error:message,message:"",success:false }
       break;
       case PUT_DOCTER_REQUEST:
-        return { ...state, loading: true }
+        return { ...state, loading: true,Docters:[],error:null,message:"",success:false }
         break;
       case PUT_DOCTER_SUCCESS:
-        return { ...state, loading: false, message: message, success: true, error: null }
+        return { ...state, loading: false, Docters:[],error:null,message:message,success:true }
         break;
       case PUT_DOCTER_FAILURE:
-        return { ...state, loading: false, error: message, success: false }
+        return { ...state, loading: false, Docters:[],error:message,message:"",success:false }
         break;
         case DELETE_DOCTER_REQUEST:
-          return { ...state, loading: true }
+          return { ...state, loading: true,Docters:[],error:null,message:"",success:false }
           break;
         case DELETE_DOCTER_SUCCESS:
-          return { ...state, loading: false, message: message, success: true, error: null }
+          return { ...state, loading: false, Docters:[],error:null,message:message,success:true }
           break;
         case DELETE_DOCTER_FAILURE:
-          return { ...state, loading: false, error: message, success: false }
+          return { ...state, loading: false, Docters:[],error:message,message:"",success:false }
           break;   
 
 

@@ -109,7 +109,7 @@ export const DoctersDashboard = () => {
             <option value="Cardiologist">Cardiologist</option>
             <option value="Dermatologist">Dermatologist</option>
             <option value="Pediatrician">Pediatrician</option>
-            <option value="Psychiatrist">Psychiatrist </option>
+            <option value="Psychiatrist">Psychiatrist</option>
           </select>
 
         </div>
@@ -188,7 +188,7 @@ export const DoctersDashboard = () => {
             <option value="Cardiologist">Cardiologist</option>
             <option value="Dermatologist">Dermatologist</option>
             <option value="Pediatrician">Pediatrician</option>
-            <option value="Psychiatrist">Psychiatrist </option>
+            <option value="Psychiatrist">Psychiatrist</option>
             </select>
           </div>
           {state.Docters.length>0?state.Docters?.map((docter, i) => {
